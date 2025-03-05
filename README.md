@@ -1,9 +1,13 @@
-﻿This project will cover `Role-Based Authorization and Claims` with `JWT Bearer Token` Authentication.
+﻿# DotNet-8-Identity-Auth
+
+## Asp.Net Core 8 Role-Based Authorization and Claims with JWT Bearer Token Authentication
+
+This project will cover `Role-Based Authorization and Claims` with `JWT Bearer Token` Authentication.
 
 ### Tools and Technologies
 - JetBrains Rider
 - Dot-Net 8
-- Asp.Net Core 8
+- Asp.Net Core 8 web API
 - PostgresSql Database
 
 ### Installed Nuget Packages
