@@ -9,6 +9,8 @@ and use `Extension Method` for `ServiceCollection` and `ApplicationBuilder` for 
 - JetBrains Rider
 - Dot-Net 8
 - Asp.Net Core 8 web API
+- JWT Bearer Token Package
+- Identity Package
 - PostgresSql Database
 
 ### Installed Nuget Packages
@@ -26,3 +28,11 @@ dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
 dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
 dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
 ```
+
+### Project Structure
+- **Models**: Data Models (Tables)
+- **Data**: Database Context and Models
+- **Controllers**: API Endpoints
+- **DTOs**: Data Transfer Objects
+- **Extensions**: Extension Methods
+- **Migrations**: Database Migrations
