@@ -45,6 +45,13 @@ public class AccountController : ControllerBase
         {
             return BadRequest(result.Errors);
         }
+        // add the user to the default role
+        // var roleResult = await _userManager.AddToRoleAsync(user, "User");
+        // // check if the user was added to the role
+        // if (!roleResult.Succeeded)
+        // {
+        //     return StatusCode(500, roleResult.Errors);
+        // }
         return Ok(new {message = "User created successfully"});
     }
     
