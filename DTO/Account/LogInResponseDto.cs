@@ -3,7 +3,7 @@
 public class LogInResponseDto
 {
     public String Message { get; set; } = String.Empty;
-    public BodyLogInResponseDto Body { get; set; } = new BodyLogInResponseDto();
+    public BodyLogInResponseDto Data { get; set; } = new BodyLogInResponseDto();
 }
 
 public class BodyLogInResponseDto

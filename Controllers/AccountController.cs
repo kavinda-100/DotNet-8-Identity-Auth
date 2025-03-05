@@ -99,7 +99,7 @@ public class AccountController : ControllerBase
         return Ok(new LogInResponseDto
         {
             Message = "User logged in successfully",
-            Body = new BodyLogInResponseDto
+            Data = new BodyLogInResponseDto
             {
                 Email = user.Email!,
                 Token = token
