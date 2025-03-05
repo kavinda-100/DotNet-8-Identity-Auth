@@ -3,6 +3,7 @@
 ## Asp.Net Core 8 Role-Based Authorization and Claims with JWT Bearer Token Authentication
 
 This project will cover `Role-Based Authorization and Claims` with `JWT Bearer Token` Authentication.
+and use `Extension Method` for `ServiceCollection` and `ApplicationBuilder` for better code readability.
 
 ### Tools and Technologies
 - JetBrains Rider
