@@ -23,4 +23,5 @@ dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
 
 // for authentication with identity pakage
 dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
 ```
