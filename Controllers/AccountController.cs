@@ -76,21 +76,26 @@ public class AccountController : ControllerBase
         {
             return BadRequest(new {message = "Invalid credentials"});
         }
+        // get the roles
+        var roles = await _userManager.GetRolesAsync(user);
         // generate the token
         // get the key for the appSettings
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:SignInKey"]!));
         // Signing credentials are used to sign the token.
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        // claims
+        ClaimsIdentity claims = new ClaimsIdentity(new Claim[]
+            {
+                // custom claims can be added here
+                new Claim("UserId", user.Id),
+                new Claim(ClaimTypes.Email, user.Email!),
+                new Claim(ClaimTypes.GivenName, user.FullName),
+                new Claim(ClaimTypes.Role, roles.First())
+            });
         // Token descriptor is used to create the token.
         var tokenDescriptor = new SecurityTokenDescriptor
         {
-            Subject = new ClaimsIdentity(new Claim[]
-            {
-                new(JwtRegisteredClaimNames.Email, user.Email!),
-                new(JwtRegisteredClaimNames.GivenName, user.FullName),
-                // custom claims can be added here
-                new("UserId", user.Id)
-            }),
+            Subject = claims,
             Expires = DateTime.UtcNow.AddDays(7),
             SigningCredentials = credentials,
             Issuer = _config["Jwt:Issuer"],

@@ -53,11 +53,11 @@ public static class IdentityExtension
             };
         });
         // add authorization
-        // services.AddAuthorization(options =>
-        // {
-        //     options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
-        //     options.AddPolicy("RequireUserRole", policy => policy.RequireRole("User"));
-        // });
+        services.AddAuthorization(options =>
+        {
+            options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+            options.AddPolicy("RequireUserRole", policy => policy.RequireRole("User"));
+        });
         return services;
     }
 }
