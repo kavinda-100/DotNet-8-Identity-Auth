@@ -11,7 +11,9 @@ public static class IdentityExtension
     public static IServiceCollection AddIdentityHandlersAndStoresExtension(this IServiceCollection services)
     {
         // Identity configuration
-        services.AddIdentityApiEndpoints<AppUser>().AddEntityFrameworkStores<ApplicationDbContext>();
+        services.AddIdentityApiEndpoints<AppUser>()
+            .AddRoles<IdentityRole>() // add roles
+            .AddEntityFrameworkStores<ApplicationDbContext>();
         
         return services;
     }
@@ -35,6 +37,7 @@ public static class IdentityExtension
 
     public static IServiceCollection AddIdentityAuthenticationExtension(this IServiceCollection services, IConfiguration configuration)
     {
+        // JWT authentication
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
         {
             options.SaveToken = false;
@@ -49,7 +52,12 @@ public static class IdentityExtension
                 IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(configuration["Jwt:SignInKey"]!))
             };
         });
-        
+        // add authorization
+        // services.AddAuthorization(options =>
+        // {
+        //     options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+        //     options.AddPolicy("RequireUserRole", policy => policy.RequireRole("User"));
+        // });
         return services;
     }
 }
