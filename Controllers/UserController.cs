@@ -25,6 +25,13 @@ public class UserController : ControllerBase
         if(string.IsNullOrEmpty(email)) return StatusCode(500, new { message = "User not found" });
         
         var user = await _userManager.FindByEmailAsync(email);
-        return Ok(new { message = "User profile", user });
+        
+        var userObj = new
+        {
+            user?.Id,
+            user?.Email,
+            user?.FullName,
+        };
+        return Ok(new { message = "User profile", user = userObj });
     }
 }
