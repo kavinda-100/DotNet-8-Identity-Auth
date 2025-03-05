@@ -35,16 +35,7 @@ public static class IdentityExtension
 
     public static IServiceCollection AddIdentityAuthenticationExtension(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddAuthentication(options =>
-        {
-            options.DefaultAuthenticateScheme = 
-                options.DefaultChallengeScheme =
-                    options.DefaultForbidScheme =
-                        options.DefaultScheme = 
-                            options.DefaultSignInScheme = 
-                                options.DefaultSignOutScheme = 
-                                    JwtBearerDefaults.AuthenticationScheme;
-        }).AddJwtBearer(options =>
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
         {
             options.SaveToken = false;
             // token validation parameters
